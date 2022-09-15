@@ -15,7 +15,8 @@ def main():
     H, data_train, data_valid_or_test, preprocess_fn = set_up_data(H)
     vae, ema_vae = load_vaes(H, logprint)
 
-    
+    encoder = ema_vae.encoder
+    decoder = ema_vae.decoder
 
 
 if __name__ == "__main__":

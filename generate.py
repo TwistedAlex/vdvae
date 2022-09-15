@@ -12,7 +12,7 @@ from train_helpers import set_up_hyperparams, load_vaes, load_opt, accumulate_st
 
 def main():
     H, logprint = set_up_hyperparams()
-    H, data_train, data_valid_or_test, preprocess_fn = set_up_data(H)
+    H = set_up_data(H)
     vae, ema_vae = load_vaes(H, logprint)
 
     img = ema_vae.forward_uncond_samples(1, t=1)

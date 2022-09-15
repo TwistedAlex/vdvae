@@ -16,11 +16,10 @@ def main():
     H = set_up_data(H)
     vae, ema_vae = load_vaes(H, logprint)
 
-    img = ema_vae.forward_uncond_samples(1, t=1)
-    print(img.shape)
-    PIL.Image.fromarray(img[0], 'RGB').save('1.png')
-    orig = img[0].transpose((2, 0, 1))
-    print(orig.shape)
-    PIL.Image.fromarray(orig, 'RGB').save('0.png')
+    for idx in range(1000):
+
+        img = ema_vae.forward_uncond_samples(1, t=1)
+        PIL.Image.fromarray(img[0], 'RGB').save(f'{idx:05d}.png')
+
 if __name__ == "__main__":
     main()

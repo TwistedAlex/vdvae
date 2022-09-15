@@ -8,6 +8,7 @@ from torch.utils.data.distributed import DistributedSampler
 from data import set_up_data
 from utils import get_cpu_stats_over_ranks
 from train_helpers import set_up_hyperparams, load_vaes, load_opt, accumulate_stats, save_model, update_ema
+import PIL.Image
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
 
     img = ema_vae.forward_uncond_samples(1, t=1)
     print(img.shape)
-
-
+    orig = img[0].permute([2, 0, 1])
+    PIL.Image.fromarray(orig, 'RGB').save('0.png')
 if __name__ == "__main__":
     main()

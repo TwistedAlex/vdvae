@@ -15,8 +15,8 @@ def main():
     H, data_train, data_valid_or_test, preprocess_fn = set_up_data(H)
     vae, ema_vae = load_vaes(H, logprint)
 
-    encoder = ema_vae.encoder
-    decoder = ema_vae.decoder
+    img = ema_vae.forward_uncond_samples(1, t=1)
+    print(img.shape)
 
 
 if __name__ == "__main__":

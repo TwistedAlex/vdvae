@@ -18,7 +18,7 @@ def main():
 
     img = ema_vae.forward_uncond_samples(1, t=1)
     print(img.shape)
-    orig = img[0].permute([2, 0, 1])
+    orig = img[0].transpose((2, 0, 1))
     PIL.Image.fromarray(orig, 'RGB').save('0.png')
 if __name__ == "__main__":
     main()
